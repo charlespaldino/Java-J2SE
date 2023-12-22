@@ -1,0 +1,43 @@
+package CircuitBoards.BasicBoards;
+
+import CircuitBoards.CircuitBoard;
+import Connectors.Connector;
+import Gates.ANDGate;
+import Gates.XORGate;
+
+public class HalfAdderBoard extends CircuitBoard 
+{
+
+	@Override
+	public void initialize() 
+	{
+		Connector a = new Connector();
+		Connector b = new Connector();
+		Connector first_output = new Connector();
+		Connector second_output = new Connector();
+		
+		input_connectors.add(0, a);
+		input_connectors.add(1, b);
+		output_connectors.add(0, first_output);
+		output_connectors.add(1, second_output);
+		
+		XORGate first_gate = new XORGate();
+		ANDGate second_gate = new ANDGate();
+		
+		first_gate.setInputConnector(0, a);
+		first_gate.setInputConnector(1, b);
+		second_gate.setInputConnector(0, a);
+		second_gate.setInputConnector(1, b);
+		
+		
+		
+		input_gates.add(0, first_gate);
+		input_gates.add(1, second_gate);
+		
+		output_gates.add(0, first_gate);
+		output_gates.add(1, second_gate);	
+	}
+
+	
+	
+}

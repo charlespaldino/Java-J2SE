@@ -1,0 +1,14 @@
+package Gates.Core;
+
+
+import java.util.ArrayList;
+
+import Connectors.Connector;
+
+public abstract class TwoToOneLogicGate extends ManyToOneLogicGate
+{
+	public TwoToOneLogicGate()
+	{	
+		super(new Connector(), new Connector(), new Connector());
+	}
+}

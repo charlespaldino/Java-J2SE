@@ -1,0 +1,19 @@
+package Gates.Core;
+
+
+import Connectors.Connector;
+
+public abstract class ManyToManyLogicGate extends LogicGate
+{
+	public ManyToManyLogicGate(Connector output, Connector... input)
+	{
+		for(Connector input_connector : input)
+		{
+			input_connectors.addAll(input);
+		}
+		
+		
+		
+		output_connectors.add(0, output);
+	}
+}

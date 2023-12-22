@@ -1,0 +1,43 @@
+package Gates.Core;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import Connectors.Connector;
+import Integration.IComputational;
+
+public abstract class LogicGate implements IComputational 
+{
+	//@TODO AND-OR-invert 2 to 2, 2-1 AOI gate
+	//https://en.wikipedia.org/wiki/AND-OR-invert
+	protected List<Connector> input_connectors = new ArrayList<Connector>();
+	protected List<Connector> output_connectors = new ArrayList<Connector>();
+	
+	public LogicGate() {}
+	
+	public List<Connector> getInputConnectors() {
+		return input_connectors;
+	}
+	public void setInputConnectors(List<Connector> input_connectors) {
+		this.input_connectors = input_connectors;
+	}
+	public List<Connector> getOutputConnectors() {
+		return output_connectors;
+	}
+	public void setOutputConnectors(List<Connector> output_connectors) {
+		this.output_connectors = output_connectors;
+	}
+	
+	public void setInputConnector(int position, Connector connector)
+	{
+		input_connectors.add(position, connector);
+	}
+	
+	public void setOutputConnector(int position, Connector connector)
+	{
+		output_connectors.set(position, connector);
+	}
+	
+	
+
+}

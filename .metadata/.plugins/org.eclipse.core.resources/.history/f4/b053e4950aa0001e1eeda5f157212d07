@@ -1,0 +1,126 @@
+package CircuitBoards.BasicBoards;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import CircuitBoards.CircuitBoard;
+import Connectors.Connector;
+
+public class Addition8BitBoard extends CircuitBoard 
+{
+	/**
+	 * Adds Two 8 bit binary numbers.
+	 * IE:
+	 * 0 1 0 0 1 1 1 0 +
+	 * 0 1 0 0 1 0 1 1
+	 * =
+	 * 1 0 0 1 1 0 0 1
+	 */
+	public Addition8BitBoard() 
+	{
+		setName("Addition_8Bit");
+		
+		//A|B|S 1 to 8
+		for(int x = 1; x < 9; x++)
+		{
+			input_connectors.add(new Connector("Addition_A"+x));
+			input_connectors.add(new Connector("Addition_B"+x));
+			output_connectors.add(new Connector("Addition_S"+x));
+		}
+		
+		output_connectors.add(new Connector("Addition_OverFlow"));
+		
+		//Half Adder, first input board.
+		HalfAdderBoard first_halfadder = new HalfAdderBoard();
+		first_halfadder.setName(getName() + "_HA1");
+		internal_boards.add(0,first_halfadder);
+		computation_mapping.addLast(first_halfadder);
+		
+		//Add 7 Full Adder Boards
+		for(int x = 1; x < 9; x++)
+		{
+			FullAdderBoard full_adder = new FullAdderBoard(getName() + "_FA"+(x+1));	
+			internal_boards.add(full_adder);
+			computation_mapping.addLast(full_adder);
+		}
+		
+		synchronizeConnectors();
+	}
+
+	@Override
+	public void synchronizeConnectors() 
+	{
+
+		HalfAdderBoard halfadder = (HalfAdderBoard) internal_boards.get(0);
+		List<Connector> ha1_in_connectors = halfadder.getInputConnectors();
+		List<Connector> ha1_out_connectors = halfadder.getOutputConnectors();
+		
+		ha1_in_connectors.set(0, input_connectors.get(0)); //A1
+		ha1_in_connectors.set(1, input_connectors.get(1)); //B1
+		ha1_out_connectors.set(0, output_connectors.get(0)); //S1
+		halfadder.synchronizeConnectors();
+
+		FullAdderBoard f2 = (FullAdderBoard) internal_boards.get(1);
+		List<Connector> f2_in = f2.getInputConnectors();
+		List<Connector> f2_out = f2.getOutputConnectors();
+		
+		f2_in.set(0, ha1_out_connectors.get(1));//Cout to FA Cin
+		f2_in.set(1, input_connectors.get(2));//A2		
+		f2_in.set(2, input_connectors.get(3));//B2
+		f2_out.set(0, output_connectors.get(1));//S2
+		f2.synchronizeConnectors();
+		
+		FullAdderBoard f3 = (FullAdderBoard) internal_boards.get(2);
+		List<Connector> f3_in = f_2.getInputConnectors();
+		List<Connector> f3_out = f_2.getOutputConnectors();
+		
+		f3_in.set(0, f2_out.get(1));//FA2 Cout to FA3 Cin
+		f3_in.set(1, input_connectors.get(4));//A3
+		f3_in.set(2, input_connectors.get(5));//B3
+		f3_out.set(0, output_connectors.get(2));//S3
+		f3.synchronizeConnectors();
+		
+		FullAdderBoard f4 = (FullAdderBoard) internal_boards.get(2);
+		List<Connector> f4_in = f4.getInputConnectors();
+		List<Connector> f4_out = f4.getOutputConnectors();
+		f4_in.set(0, f3_out.get(1));//FA2 Cout to FA3 Cin
+		f4_in.set(1, input_connectors.get(6));//A4
+		f4_in.set(2, input_connectors.get(7));//B4
+		f4_out.set(0, output_connectors.get(3));//S4
+		f4.synchronizeConnectors();
+		
+		List<Connector> a_input_connectors = new ArrayList<Connector>();
+//		List<Connector> b_input_connectors = new ArrayList<Connector>();
+//		
+//		//Split up to make connecting easier.
+//		for(Connector connector : input_connectors)
+//		{
+//			if(connector.getName().contains("_A")) 
+//			{
+//				a_input_connectors.add(connector);
+//			}
+//			else
+//			{
+//				b_input_connectors.add(connector);
+//			}
+//		}
+//		
+//		for(int x = 2; x < 9; x++)
+//		{
+//			FullAdderBoard last_fulladder = (FullAdderBoard) internal_boards.get(x-1);
+//			FullAdderBoard fulladder = (FullAdderBoard) internal_boards.get(x);
+//			
+//			List<Connector> fa_in_connectors = fulladder.getInputConnectors();
+//			List<Connector> fa_out_connectors = fulladder.getOutputConnectors();
+//			List<Connector> last_out_connectors = last_fulladder.getOutputConnectors();
+//			
+//			fa_in_connectors.set(0, last_out_connectors.get(1)); //Cout to Cin
+//			fa_in_connectors.set(1, a_input_connectors.get(x-1)); //A
+//			fa_in_connectors.set(2, b_input_connectors.get(x-1)); //B			
+//			fa_out_connectors.set(0, output_connectors.get(x-1)); //Sum to S
+//			fulladder.synchronizeConnectors();
+//		
+//		}
+	}
+
+}

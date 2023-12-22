@@ -1,0 +1,24 @@
+package Gates;
+
+import Connectors.Connector;
+
+public abstract class LogicGate 
+{
+	protected Iterable<Connector> input_connectors;
+	protected Iterable<Connector> output_connectors;
+	
+	public Iterable<Connector> getInputConnectors() {
+		return input_connectors;
+	}
+	public void setInputConnectors(Iterable<Connector> input_connectors) {
+		this.input_connectors = input_connectors;
+	}
+	public Iterable<Connector> getOutputConnectors() {
+		return output_connectors;
+	}
+	public void setOutputConnectors(Iterable<Connector> output_connectors) {
+		this.output_connectors = output_connectors;
+	}
+	
+	
+}

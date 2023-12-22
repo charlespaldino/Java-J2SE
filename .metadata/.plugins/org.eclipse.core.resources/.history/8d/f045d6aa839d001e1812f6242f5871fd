@@ -1,0 +1,47 @@
+package CircuitBoards;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import Gates.Core.LogicGate;
+
+public abstract class CircuitBoard {
+
+	protected  List<LogicGate> input_gates = new ArrayList<LogicGate>();
+	protected  List<LogicGate> output_gates = new ArrayList<LogicGate>();
+	
+	public List<LogicGate> getInputGates() {
+		return input_gates;
+	}
+
+	public void setInputGates(List<LogicGate> input_gates) {
+		this.input_gates = input_gates;
+	}
+	
+	public List<LogicGate> getOutputGates() {
+		return output_gates;
+	}
+
+	public void setOutputGates(List<LogicGate> output_gates) {
+		this.output_gates = output_gates;
+	}
+	
+	/**
+	 * Initialize all setup needed for the board to run.
+	 */
+	public abstract void initialize();
+	
+	/**
+	 * Hands each input gate their value, then tells them to compute.
+	 */
+	public abstract void compute(); //takes in values?? no need for abstraction then? just initialize?
+	
+	//takes in array to assign inputs?  maybe Hashmap<gate slot, ints array{} //@TODO new boards Half Adder, Full Adder https://www.101computing.net/binary-additions-using-logic-gates/
+	
+	/**
+	 * Computes the final value for all output gates.
+	 */
+	public abstract void computeOutput();
+
+ 
+}

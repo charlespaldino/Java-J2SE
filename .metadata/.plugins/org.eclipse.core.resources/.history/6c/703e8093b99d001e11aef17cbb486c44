@@ -1,0 +1,7 @@
+package Gates.Core;
+
+import Connectors.Connector;
+
+public abstract class TwoToOneLogicGate extends ManyToOneLogicGate
+{
+}

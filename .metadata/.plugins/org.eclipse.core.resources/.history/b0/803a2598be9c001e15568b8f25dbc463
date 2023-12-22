@@ -1,0 +1,7 @@
+package Gates;
+
+import Gates.Core.LogicGate;
+
+public class XNORGate extends TwoToOneLogicGate{
+
+}

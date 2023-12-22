@@ -1,0 +1,5 @@
+package CircuitBoards;
+
+public abstract class CircuitBoard {
+
+}

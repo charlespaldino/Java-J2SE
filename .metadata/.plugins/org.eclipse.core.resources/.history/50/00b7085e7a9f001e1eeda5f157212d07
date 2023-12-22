@@ -1,0 +1,22 @@
+import CircuitBoards.BasicBoards.Addition8BitBoard;
+
+public class Program {
+
+	public static void main(String[] args) 
+	{
+		
+		//Manual testing here
+		
+		Addition8BitBoard adder = new Addition8BitBoard();
+		
+		adder.getInputConnectors().get(0).setValue(1);
+		
+		for(int x = 0; x < 9; x++)
+		{
+			System.out.println("S"+(x+1)+": " + adder.getOutputConnectors().get(x).getValue());	
+		}
+		
+		
+	}
+
+}

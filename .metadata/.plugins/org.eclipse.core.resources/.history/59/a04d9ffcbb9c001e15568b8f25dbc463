@@ -1,0 +1,8 @@
+package Connectors;
+
+import Gates.Connector;
+
+public class Input extends Connector
+{
+
+}

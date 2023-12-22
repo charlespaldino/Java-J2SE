@@ -1,0 +1,16 @@
+package Gates.Core;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import Connectors.Connector;
+
+public abstract class TwoInputLogicGate extends LogicGate
+{
+	public TwoInputLogicGate(Connector input_1, Connector input_2, Connector output)
+	{
+		input_connectors.add(0, input_1);
+		input_connectors.add(1, input_2);
+		output_connectors.add(0, output);
+	}
+}

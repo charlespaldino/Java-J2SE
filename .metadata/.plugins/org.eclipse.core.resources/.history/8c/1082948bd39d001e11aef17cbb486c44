@@ -1,0 +1,9 @@
+package Integration;
+
+public interface IComputational {
+
+	/**
+	 * Computes the current connector values and passes it onto the output connector.
+	 */
+	public abstract void compute();
+}

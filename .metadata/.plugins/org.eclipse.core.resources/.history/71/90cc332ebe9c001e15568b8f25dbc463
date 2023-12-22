@@ -1,0 +1,5 @@
+package Gates;
+
+public class NORGate extends LogicGate{
+
+}

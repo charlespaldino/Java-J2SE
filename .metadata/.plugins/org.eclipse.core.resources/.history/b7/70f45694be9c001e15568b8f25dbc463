@@ -1,0 +1,21 @@
+package Gates;
+
+import Connectors.Connector;
+import Gates.Core.LogicGate;
+
+public class ORGate extends LogicGate{
+
+	public ORGate(Connector input_1, Connector input_2, Connector output)
+	{
+		input_connectors.add(0, input_1);
+		input_connectors.add(1, input_2);
+		output_connectors.add(0, output);
+	}
+	
+	@Override
+	public void compute() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

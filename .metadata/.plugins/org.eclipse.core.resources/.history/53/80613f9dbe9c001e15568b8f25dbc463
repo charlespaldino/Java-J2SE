@@ -1,0 +1,14 @@
+package Gates;
+
+import Connectors.Connector;
+import Gates.Core.LogicGate;
+import Gates.Core.TwoToOneLogicGate;
+
+public class XNORGate extends TwoToOneLogicGate{
+
+	public XNORGate(Connector input_1, Connector input_2, Connector output) {
+		super(input_1, input_2, output);
+		// TODO Auto-generated constructor stub
+	}
+
+}

@@ -1,0 +1,137 @@
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+import java.util.Random;
+import java.util.stream.Stream;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.runners.Parameterized.Parameters;
+
+import CircuitBoards.BasicBoards.Addition8BitBoard;
+import Connectors.Connector;
+
+class Addition8bitBoard_Test {
+
+	public static Addition8BitBoard add8bit_board;
+	public static List<Connector>  output_connectors;
+	public static List<Connector>  input_connectors;
+	public static Random random;
+
+	@BeforeAll
+	static void setUpBeforeClass() throws Exception {
+		random = new Random();
+		add8bit_board = new Addition8BitBoard();
+		output_connectors = add8bit_board.getOutputConnectors();
+		input_connectors = add8bit_board.getInputConnectors();
+	}
+	
+	@BeforeEach
+    void setUpBeforeEach() throws Exception 
+	{
+		random = new Random();
+		for(Connector connector : input_connectors){connector.setValue(false);}	
+	}
+
+	@Parameters
+	public static Collection<boolean[]> getTestInputs() 
+	{
+	    return Arrays.asList(new boolean[] 
+	    		{
+	    			random.nextBoolean(), //A1
+	 	            random.nextBoolean(), //B1
+	 	            random.nextBoolean(), //A2
+	 	            random.nextBoolean(), //B2
+	 	            random.nextBoolean(), //A3
+	 	            random.nextBoolean(), //B3
+	 	            random.nextBoolean(), //A4
+	 	            random.nextBoolean(), //B4
+	 	            random.nextBoolean(), //A5
+	 	            random.nextBoolean(), //B5
+	 	            random.nextBoolean(), //A6
+	 	            random.nextBoolean(), //B6
+	 	            random.nextBoolean(), //A7
+	 	            random.nextBoolean(), //B7
+	 	            random.nextBoolean(), //A8
+	 	            random.nextBoolean() //B8	
+	    		});
+	}
+	
+	@Test
+	void BasicBitTest() 
+	{
+		input_connectors.get(0).setValue(true);
+		input_connectors.get(1).setValue(true);
+		add8bit_board.compute();
+		
+		assertFalse(output_connectors.get(0).getValue());
+		assertTrue(output_connectors.get(1).getValue());
+		
+		input_connectors.get(0).setValue(true);
+		input_connectors.get(1).setValue(false);
+		add8bit_board.compute();
+		
+		assertTrue(output_connectors.get(0).getValue());
+		assertFalse(output_connectors.get(1).getValue());
+			
+		input_connectors.get(0).setValue(false);
+		input_connectors.get(1).setValue(true);
+		add8bit_board.compute();
+		
+		assertTrue(output_connectors.get(0).getValue());
+		assertFalse(output_connectors.get(1).getValue());
+		
+		input_connectors.get(0).setValue(false);
+		input_connectors.get(1).setValue(false);
+		add8bit_board.compute();
+		
+		assertFalse(output_connectors.get(0).getValue());
+		assertFalse(output_connectors.get(1).getValue());
+		
+	}
+	
+	//Switched from parameterized to repeater.
+	@RepeatedTest(10)
+	@MethodSource("testInputs")
+	public void Random10Test(boolean[] values = ) 
+	{
+		
+		StringBuilder input1 = new StringBuilder();
+		StringBuilder input2 = new StringBuilder();
+		StringBuilder output = new StringBuilder();
+		
+		//Add input values into the board.
+		for(int x = 0; x < input_connectors.size(); x++)
+		{
+			input_connectors.get(x).setValue(values[x]);
+			
+			//Build input strings to check against.
+			if(x % 2 == 0){input1.append(values[x] ? "1" : "0");}
+			else {input2.append(values[x] ? "1" : "0");}
+		}
+		
+		add8bit_board.compute();
+		
+		for(Connector connector : output_connectors)
+		{
+			output.append(connector.getValue() ? "1" : "0");
+		}
+		
+		input1.reverse();
+		input2.reverse();
+		output.reverse();
+		
+		assertTrue(Integer.parseInt(input1.toString(),2)
+				+ Integer.parseInt(input2.toString(),2)
+				== Integer.parseInt(output.toString(),2));
+		
+	}
+
+}

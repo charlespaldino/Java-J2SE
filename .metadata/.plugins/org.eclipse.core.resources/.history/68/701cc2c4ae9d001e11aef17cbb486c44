@@ -1,0 +1,13 @@
+package Gates.Core;
+
+
+import Connectors.Connector;
+
+public abstract class TwoToOneLogicGate extends ManyToOneLogicGate
+{
+	public TwoToOneLogicGate(Connector output, Connector... input)
+	{	
+		System.arraycopy(input_connectors, 0, input, input.length-1, input.length);		
+		output_connectors.add(0, output);
+	}
+}

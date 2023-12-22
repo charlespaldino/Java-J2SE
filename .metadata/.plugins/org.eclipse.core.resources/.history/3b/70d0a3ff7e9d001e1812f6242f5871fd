@@ -1,0 +1,10 @@
+package CircuitBoards;
+
+import java.util.List;
+
+import Gates.Core.LogicGate;
+
+public abstract class CircuitBoard {
+
+	protected List<LogicGate> input_gates = new ArrayList<LogicGate>();
+}

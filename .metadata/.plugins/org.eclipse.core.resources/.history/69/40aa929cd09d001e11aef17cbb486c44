@@ -1,0 +1,39 @@
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import CircuitBoards.BasicBoards.FullAdderBoard;
+import CircuitBoards.BasicBoards.HalfAdderBoard;
+
+class FullAdderBoard_Test {
+	
+	public static FullAdderBoard fulladder;
+	
+	@BeforeAll
+	static void setUpBeforeClass() throws Exception {
+		fulladder = new FullAdderBoard();
+	}
+
+	/**
+	 * 0 0 0 = 0 0
+	 * 1 0 0 = 1 0
+	 * 0 1 0 = 1 0
+	 * 1 1 0 = 0 1
+	 * 0 0 1 = 1 0
+	 * 1 0 1 = 0 1
+	 * 0 1 1 = 0 1
+	 * 1 1 1 = 1 1
+	 */
+	@Test
+	void test() 
+	{
+		//0 0 0 = 0 0
+		
+		
+	}
+
+}

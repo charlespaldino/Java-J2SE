@@ -1,0 +1,10 @@
+package Gates;
+
+import Connectors.Connector;
+import Gates.Core.LogicGate;
+import Gates.Core.TwoToOneLogicGate;
+
+public class NORGate extends TwoToOneLogicGate
+{
+
+}

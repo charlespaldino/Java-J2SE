@@ -1,0 +1,36 @@
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import CircuitBoards.BasicBoards.HalfAdderBoard;
+
+class HalfAdderBoard_Test {
+
+	public static HalfAdderBoard halfadder;
+	
+	@BeforeAll
+	static void setUpBeforeClass() throws Exception {
+		halfadder = new HalfAdderBoard();
+	}
+
+	@Test
+	void test() 
+	{
+		halfadder.getInputConnectors().get(0).setValue(true);
+		halfadder.getInputConnectors().get(1).setValue(true);
+		
+		halfadder.compute();
+
+		assertTrue(halfadder.getOutputConnectors().get(0).getValue())
+		System.out.println("Half Adder Sum is: " + );
+		System.out.println("Hald Adder Carry is:" + half_adder.getOutputConnectors().get(1).getValue());
+
+		
+		fail("Not yet implemented");
+	}
+
+}

@@ -1,0 +1,8 @@
+import org.junit.platform.suite.api.SelectClasses;
+import org.junit.platform.suite.api.Suite;
+
+@Suite
+@SelectClasses({ FullAdderBoard_Test.class, HalfAdderBoard_Test.class, Addition8bitBoard_Test.class })
+public class AllTests {
+
+}

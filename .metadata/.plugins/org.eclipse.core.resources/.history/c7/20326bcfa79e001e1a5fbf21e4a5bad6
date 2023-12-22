@@ -1,0 +1,107 @@
+package CircuitBoards.BasicBoards;
+
+import CircuitBoards.CircuitBoard;
+import Connectors.Connector;
+import Gates.NANDGate;
+import Gates.NOTGate;
+import Gates.ORGate;
+
+public class DTypeFlipFlopBoard extends CircuitBoard 
+{
+	
+	
+	/**
+	 * 0 1 = 0 1
+	 * 1 1 = 1 0
+	 * 0 0 = No change
+	 * 1 0 = No change
+	 */
+	public DTypeFlipFlopBoard() 
+	{
+		setName("DTypeFlipFlopBoard");
+
+		Connector input_d = new Connector("DTF_D");
+		Connector input_e = new Connector("DTF_E");
+
+		Connector output_q = new Connector("DTF_Q");
+		Connector output_mq = new Connector("DTF_\u01EC");
+
+		input_connectors.add(0, input_d);
+		input_connectors.add(1, input_e);
+
+		output_connectors.add(0, output_q);
+		output_connectors.add(1, output_mq);
+
+		NOTGate not_gate = new NOTGate(); //D in
+		input_gates.add(0, not_gate);
+		computation_mapping.addLast(not_gate);
+
+		NANDGate nand_1 = new NANDGate();//D in, E in
+		input_gates.add(1, nand_1);	
+		computation_mapping.addLast(nand_1);
+		
+		NANDGate nand_2 = new NANDGate(); //Not D in, E in
+		input_gates.add(2, nand_2);
+		computation_mapping.addLast(nand_2);
+		
+		NANDGate nand_3 = new NANDGate(); // NAND 1 in, Q out
+		output_gates.add(0, nand_3);
+		computation_mapping.addLast(nand_3);
+		
+		NANDGate nand_4 = new NANDGate(); //NAND 2 in, MQ Out
+		output_gates.add(1, nand_4);
+		computation_mapping.addLast(nand_4);
+		
+		synchronizeConnectors();
+	}
+
+	@Override
+	public void synchronizeConnectors() 
+	{
+		NOTGate not_gate = (NOTGate) input_gates.get(0);		
+		not_gate.getInputConnectors().set(0, input_connectors.get(0)); //D in
+		
+		NANDGate nand_1 = (NANDGate) input_gates.get(1);
+		nand_1.getInputConnectors().set(0, input_connectors.get(0)); //D in
+		nand_1.getInputConnectors().set(1, input_connectors.get(1)); //E in
+		
+		NANDGate nand_2 = (NANDGate) output_gates.get(0);
+		nand_2.getInputConnectors().set(0, not_gate.getOutputConnectors().get(0)); //NOT D in
+		nand_2.getInputConnectors().set(1, input_connectors.get(1)); //E in
+		
+		NANDGate nand_3 = (NANDGate) output_gates.get(1);
+		NANDGate nand_4 = (NANDGate) output_gates.get(2);
+		
+		
+		nand_3.getInputConnectors().set(0, nand_1.getOutputConnectors().get(0)); //NAND 1 out
+		nand_3.getInputConnectors().set(1, nand_4.getOutputConnectors().get(0)); //NAND 4 Out
+	
+		
+		
+//		ORGate or_gate = (ORGate) output_gates.get(0);
+//		HalfAdderBoard first_halfadder = (HalfAdderBoard) internal_boards.get(0);
+//		List<Connector> ha1_in_connectors = first_halfadder.getInputConnectors();
+//		List<Connector> ha1_out_connectors = first_halfadder.getOutputConnectors();
+//		
+//		ha1_in_connectors.set(0, input_connectors.get(0)); //A
+//		ha1_in_connectors.set(1, input_connectors.get(1)); //B		
+//		first_halfadder.synchronizeConnectors();
+//		
+//		HalfAdderBoard second_halfadder = (HalfAdderBoard) internal_boards.get(1);
+//		List<Connector> ha2_in_connectors = second_halfadder.getInputConnectors();
+//		List<Connector> ha2_out_connectors = second_halfadder.getOutputConnectors();
+//		
+//		ha2_in_connectors.set(0, input_connectors.get(2)); //Carry In
+//		ha2_in_connectors.set(1, ha1_out_connectors.get(0)); // First SUM out	
+//		second_halfadder.getOutputConnectors().set(0, output_connectors.get(0)); //Board SUM out
+//		//second_halfadder.getOutputConnectors().set(1, or_gate.getInputConnectors()); //Cout into OR 
+//		
+//		second_halfadder.synchronizeConnectors();
+//		
+//		or_gate.setInputConnector(0, ha1_out_connectors.get(1)); //First Half Carry Out
+//		or_gate.setInputConnector(1, ha2_out_connectors.get(1)); //Second Half Carry Out
+//		or_gate.setOutputConnector(0, output_connectors.get(1)); //Board Carry Out		
+
+	}
+
+}

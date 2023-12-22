@@ -1,0 +1,35 @@
+package Gates.Advanced;
+
+import Connectors.Connector;
+import Gates.Core.ManyToOneLogicGate;
+
+/**
+ * Represents an AND-OR-invert gate.
+ */
+public class AOIGate extends ManyToOneLogicGate{
+
+	public AOIGate(Connector output, Connector... input) {
+		
+		super(output, input);
+		
+	}
+
+	
+	
+	@Override
+	public void compute() 
+	{
+		//check every 2 connectors, if both are 1, then
+		boolean value = false;
+		for(int x = 1; x < input_connectors.size(); x+=2)
+		{
+			value = input_connectors.get(x-1).getValue() && input_connectors.get(x).getValue();
+			if(!value) {break;}
+		}
+		
+		input_connectors.
+		
+		output_connectors.get(0).setValue(input_connectors.get(0).getValue() == input_connectors.get(1).getValue());
+	}
+
+}

@@ -1,0 +1,27 @@
+package Gates;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import Connectors.Connector;
+
+public abstract class LogicGate 
+{
+	protected List<Connector> input_connectors = new ArrayList<Connector>();
+	protected List<Connector> output_connectors = new ArrayList<Connector>();
+	
+	public List<Connector> getInputConnectors() {
+		return input_connectors;
+	}
+	public void setInputConnectors(List<Connector> input_connectors) {
+		this.input_connectors = input_connectors;
+	}
+	public List<Connector> getOutputConnectors() {
+		return output_connectors;
+	}
+	public void setOutputConnectors(List<Connector> output_connectors) {
+		this.output_connectors = output_connectors;
+	}
+	
+	
+}

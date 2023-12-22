@@ -1,0 +1,73 @@
+package Gates.Core;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import Connectors.Connector;
+import Integration.IComputational;
+
+public abstract class LogicGate implements IComputational 
+{
+	private String name = "";
+	
+	protected List<Connector> input_connectors = new ArrayList<Connector>();
+	protected List<Connector> output_connectors = new ArrayList<Connector>();
+	
+	public LogicGate() {}
+	
+	public List<Connector> getInputConnectors() {
+		return input_connectors;
+	}
+	public void setInputConnectors(List<Connector> input_connectors) {
+		this.input_connectors = input_connectors;
+	}
+	public List<Connector> getOutputConnectors() {
+		return output_connectors;
+	}
+	public void setOutputConnectors(List<Connector> output_connectors) {
+		this.output_connectors = output_connectors;
+	}
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	/**
+	 * This will add the connector if nothing found to replace.
+	 */
+	public void setInputConnector(int position, Connector connector)
+	{
+		try
+		{
+			input_connectors.set(position, connector);
+		}
+		catch(Exception e) {}
+		
+		
+		input_connectors.add(position, connector);
+	}
+	
+	/**
+	 * This will add the connector if nothing found to replace.
+	 */
+	public void setOutputConnector(int position, Connector connector)
+	{
+		try
+		{
+			output_connectors.set(position, connector);
+		}
+		catch(Exception e) {}
+		
+		
+		output_connectors.add(position, connector);
+	}
+
+	
+	
+	
+
+}

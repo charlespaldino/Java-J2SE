@@ -1,0 +1,77 @@
+package CircuitBoards.BasicBoards;
+
+import java.util.List;
+
+import CircuitBoards.CircuitBoard;
+import Connectors.Connector;
+import Gates.ORGate;
+
+public class FullAdderBoard extends CircuitBoard 
+{
+	/**
+	 * 0 0 0 = 0 0
+	 * 1 0 0 = 1 0
+	 * 0 1 0 = 1 0
+	 * 1 1 0 = 0 1
+	 * 0 0 1 = 1 0
+	 * 1 0 1 = 0 1
+	 * 0 1 1 = 0 1
+	 * 1 1 1 = 1 1
+	 */
+	public FullAdderBoard() 
+	{
+		setName("Full Adder");
+		
+		Connector carry_in = new Connector("Cin");
+		Connector a = new Connector("A");
+		Connector b = new Connector("B");
+		
+		Connector first_output = new Connector("Sum");
+		Connector second_output = new Connector("Cout");
+		
+		input_connectors.add(0, a);
+		input_connectors.add(1, b);
+		input_connectors.add(2, carry_in);
+		
+		output_connectors.add(0, first_output);
+		output_connectors.add(1, second_output);
+		
+		HalfAdderBoard first_halfadder = new HalfAdderBoard();
+		HalfAdderBoard second_halfadder = new HalfAdderBoard();		
+		ORGate or_gate = new ORGate();
+		
+		computation_mapping.addLast(first_halfadder);
+		computation_mapping.addLast(second_halfadder);
+		computation_mapping.addLast(or_gate);
+		
+		internal_boards.add(first_halfadder);
+		internal_boards.add(second_halfadder);
+		
+		output_gates.add(or_gate);
+		
+		List<Connector> in_connectors_1 = first_halfadder.getInputConnectors();
+		List<Connector> in_connectors_2 = second_halfadder.getInputConnectors();
+		List<Connector> out_connectors_1 = first_halfadder.getOutputConnectors();
+		List<Connector> out_connectors_2 = second_halfadder.getOutputConnectors();
+		
+		//Half 1
+		first_halfadder.setName(getName() + "_HA1");
+		in_connectors_1.set(0, a);
+		in_connectors_1.set(1, b);
+				
+		//Half 2
+		second_halfadder.setName(getName() + "_HA2");
+		in_connectors_2.set(0, carry_in);
+		in_connectors_2.set(1, out_connectors_1.get(0)); // First SUM out		
+		
+		second_halfadder.getOutputConnectors().set(0, first_output); //Board SUM out
+				
+		//OR
+		or_gate.setInputConnector(0, out_connectors_1.get(1)); //First Half Carry Out
+		or_gate.setInputConnector(1, out_connectors_2.get(1)); //Second Half Carry Out
+		or_gate.setOutputConnector(0, second_output); //Board Carry Out
+		
+		
+	}
+
+}

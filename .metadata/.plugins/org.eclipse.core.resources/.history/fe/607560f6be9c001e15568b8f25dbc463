@@ -1,0 +1,20 @@
+package Gates;
+
+import Connectors.Connector;
+import Gates.Core.LogicGate;
+import Gates.Core.OneToOneLogicGate;
+import Gates.Core.TwoToOneLogicGate;
+
+public class NORGate extends OneToOneLogicGate
+{
+
+	public NORGate(Connector input, Connector output) {super(input, output);}
+
+	@Override
+	public void compute() 
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+}

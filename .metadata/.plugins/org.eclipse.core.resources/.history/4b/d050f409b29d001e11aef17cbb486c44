@@ -1,0 +1,31 @@
+package CircuitBoards.BasicBoards;
+
+import CircuitBoards.CircuitBoard;
+import Gates.ANDGate;
+import Gates.XORGate;
+
+public class HalfAdderBoard extends CircuitBoard 
+{
+
+	@Override
+	public void initialize() 
+	{
+		XORGate first_gate = new XORGate();
+		ANDGate second_gate = new ANDGate();
+		
+		input_gates.add(0, first_gate);
+		input_gates.add(1, second_gate);
+		
+		output_gates.add(0, first_gate);
+		output_gates.add(1, second_gate);	
+	}
+
+	@Override
+	public void computeOutput() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+	
+}

@@ -1,0 +1,23 @@
+1702885589629	Copy compilation unit
+1702886077205	Rename compilation unit 'ManyToManyLogicGate.java'
+1702886099028	Delete element
+1702886101094	Delete element
+1702886389494	Copy compilation unit
+1702886480382	Rename type 'XNORGate'
+1702887425043	Delete element
+1702888010455	Encapsulate field 'input_gates'
+1702908209732	Copy compilation unit
+1702908425722	Copy compilation unit
+1702908582137	Copy compilation unit
+1702909778413	Encapsulate field 'input_connectors'
+1702909787941	Encapsulate field 'output_connectors'
+1702914386916	Copy compilation unit
+1702927851562	Encapsulate field 'internal_boards'
+1702928355585	Encapsulate field 'name'
+1702928643860	Encapsulate field 'Name'
+1702988120238	Copy compilation unit
+1702990082587	Copy compilation unit
+1703018016497	Encapsulate field 'name'
+1703020900812	Delete element
+1703084822147	Delete element
+1703084839476	Copy compilation unit

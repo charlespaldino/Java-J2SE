@@ -1,0 +1,15 @@
+package Gates;
+
+import Connectors.Connector;
+import Gates.Core.LogicGate;
+import Gates.Core.TwoToOneLogicGate;
+
+public class NANDGate extends TwoToOneLogicGate{
+
+
+	@Override
+	public void compute() {
+		// TODO Auto-generated method stub
+		
+	}
+}

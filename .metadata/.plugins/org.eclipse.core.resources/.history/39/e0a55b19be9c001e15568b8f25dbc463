@@ -1,0 +1,11 @@
+package Gates;
+
+public class ORGate extends LogicGate{
+
+	@Override
+	public void compute() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

@@ -1,0 +1,11 @@
+package Gates;
+
+import Connectors.Connector;
+
+public class ANDGate extends LogicGate{
+
+	public ANDGate(Connector input_1, Connector input_2, Connector output)
+	{
+		this.input_connectors.add(0, input_1);
+	}
+}

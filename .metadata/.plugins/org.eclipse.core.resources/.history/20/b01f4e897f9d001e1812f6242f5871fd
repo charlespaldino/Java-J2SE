@@ -1,0 +1,40 @@
+package CircuitBoards;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import Gates.Core.LogicGate;
+
+public abstract class CircuitBoard {
+
+	protected  List<LogicGate> input_gates = new ArrayList<LogicGate>();
+	protected  List<LogicGate> output_gates = new ArrayList<LogicGate>();
+	
+	public List<LogicGate> getInputGates() {
+		return input_gates;
+	}
+
+	public void setInputGates(List<LogicGate> output_gates) {
+		this.input_gates = input_gates;
+	}
+	
+	public List<LogicGate> getOutputGates() {
+		return input_gates;
+	}
+
+	public void setInputGates(List<LogicGate> output_gates) {
+		this.input_gates = input_gates;
+	}
+	
+	/**
+	 * Initialize all setup needed for the board to run.
+	 */
+	public abstract void initialize();
+	
+	/**
+	 * Hands each input gate their value, then tells them to compute.
+	 */
+	public abstract void compute();
+
+ 
+}

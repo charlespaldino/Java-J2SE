@@ -1,0 +1,16 @@
+package Gates;
+
+import Connectors.Connector;
+import Gates.Core.ManyToOneLogicGate;
+
+public class XORGate extends ManyToOneLogicGate{
+
+	public XORGate(Connector output, Connector... input) {super(output, input);}
+
+	@Override
+	public void compute() 
+	{
+		output_connectors.get(0).setValue(input_connectors.get(0).getValue() == input_connectors.get(1).getValue());
+	}
+
+}

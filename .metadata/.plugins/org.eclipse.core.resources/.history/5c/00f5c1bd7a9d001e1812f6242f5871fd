@@ -1,0 +1,13 @@
+package Gates.Core;
+
+
+import Connectors.Connector;
+
+public abstract class OneToOneLogicGate extends LogicGate
+{
+	public OneToOneLogicGate(Connector input, Connector output)
+	{
+		input_connectors.add(0, input);
+		output_connectors.add(0, output);
+	}
+}

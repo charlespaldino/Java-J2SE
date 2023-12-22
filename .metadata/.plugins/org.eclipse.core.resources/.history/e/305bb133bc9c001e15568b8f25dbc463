@@ -1,0 +1,5 @@
+package Gates;
+
+public abstract class LogicGate {
+
+}

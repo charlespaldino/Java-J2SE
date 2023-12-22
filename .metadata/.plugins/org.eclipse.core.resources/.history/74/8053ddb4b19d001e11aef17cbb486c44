@@ -1,0 +1,64 @@
+package CircuitBoards;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import Connectors.Connector;
+import Gates.Core.LogicGate;
+
+public abstract class CircuitBoard {
+
+	//https://www.101computing.net/digital-padlock-using-logic-gates/ ADD THIS
+	//Add 2 to 1 logic gate, extends ManyTo 1, use for 2 to 1 gates. addedi n folder called Gates.Basic
+	//add BasicADNGate, BasicORGatem etc - stem from 2 to 1 gate.
+	
+	protected List<LogicGate> input_gates = new ArrayList<LogicGate>();
+	protected List<LogicGate> output_gates = new ArrayList<LogicGate>();
+	
+	protected List<Connector> input_connectors = new ArrayList<Connector>(); 
+	
+	public List<LogicGate> getInputGates() {
+		return input_gates;
+	}
+
+	public void setInputGates(List<LogicGate> input_gates) {
+		this.input_gates = input_gates;
+	}
+	
+	public List<LogicGate> getOutputGates() {
+		return output_gates;
+	}
+
+	public void setOutputGates(List<LogicGate> output_gates) {
+		this.output_gates = output_gates;
+	}
+	
+	/**
+	 * Initialize all setup needed for the board to run.
+	 */
+	public abstract void initialize();
+	
+	/**
+	 * Hands each input gate their value, then tells them to compute.
+	 */
+	public void compute(boolean ... values)
+	{
+		for(int x = 0; x < values.length; x++)
+		{
+			input_gates.get(x).setInputConnectorValue(x, values[x]);
+		}
+	}
+	
+	
+	//takes in array to assign inputs?  maybe Hashmap<gate slot, ints array{} //@TODO new boards Half Adder, Full Adder https://www.101computing.net/binary-additions-using-logic-gates/
+	
+	/**
+	 * Computes the final value for all output gates.
+	 */
+	public void computeOutput() 
+	{
+		
+	}
+
+ 
+}

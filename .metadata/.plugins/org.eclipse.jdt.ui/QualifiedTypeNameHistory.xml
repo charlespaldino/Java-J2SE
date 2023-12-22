@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="CircuitBoards.CircuitBoard"/>
+    <fullyQualifiedTypeName name="Gates.ANDGate"/>
+    <fullyQualifiedTypeName name="Gates.XORGate"/>
+    <fullyQualifiedTypeName name="Gates.Core.TwoToOneLogicGate"/>
+    <fullyQualifiedTypeName name="Gates.Core.OneToOneLogicGate"/>
+    <fullyQualifiedTypeName name="Gates.ORGate"/>
+    <fullyQualifiedTypeName name="Integration.IComputational"/>
+    <fullyQualifiedTypeName name="java.util.LinkedList"/>
+    <fullyQualifiedTypeName name="CircuitBoards.BasicBoards.FullAdderBoard"/>
+    <fullyQualifiedTypeName name="CircuitBoards.BasicBoards.HalfAdderBoard"/>
+    <fullyQualifiedTypeName name="CircuitBoards.BasicBoards.DTypeFlipFlopBoard"/>
+    <fullyQualifiedTypeName name="Gates.NANDGate"/>
+    <fullyQualifiedTypeName name="Gates.NOTGate"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="CircuitBoards.BasicBoards.Addition8BitBoard"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="Connectors.Connector"/>
+    <fullyQualifiedTypeName name="org.junit.jupiter.params.ParameterizedTest"/>
+    <fullyQualifiedTypeName name="org.junit.jupiter.params.provider.ValueSource"/>
+    <fullyQualifiedTypeName name="org.junit.runners.Parameterized.Parameters"/>
+    <fullyQualifiedTypeName name="org.junit.jupiter.params.provider.MethodSource"/>
+    <fullyQualifiedTypeName name="java.util.stream.Stream"/>
+    <fullyQualifiedTypeName name="org.junit.jupiter.params.provider.Arguments"/>
+    <fullyQualifiedTypeName name="java.lang.Math"/>
+    <fullyQualifiedTypeName name="java.util.Random"/>
+    <fullyQualifiedTypeName name="java.util.Arrays"/>
+    <fullyQualifiedTypeName name="java.util.Collection"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+</qualifiedTypeNameHistroy>

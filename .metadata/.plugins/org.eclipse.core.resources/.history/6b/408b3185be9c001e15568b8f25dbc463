@@ -1,0 +1,13 @@
+package Gates;
+
+import Connectors.Connector;
+import Gates.Core.TwoToOneLogicGate;
+
+public class ANDGate extends TwoToOneLogicGate{
+
+	
+	public void compute()
+	{
+		output_connectors.get(0).setValue(input_connectors.get(0).getValue() && input_connectors.get(1).getValue());
+	}
+}

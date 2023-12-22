@@ -1,0 +1,6 @@
+package Gates;
+
+public class ANDGate extends LogicGate{
+
+	
+}

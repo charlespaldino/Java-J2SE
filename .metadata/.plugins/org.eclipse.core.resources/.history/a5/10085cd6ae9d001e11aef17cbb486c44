@@ -1,0 +1,12 @@
+package Gates.Core;
+
+
+import Connectors.Connector;
+
+public abstract class TwoToOneLogicGate extends ManyToOneLogicGate
+{
+	public TwoToOneLogicGate()
+	{	
+		super(null,null)
+	}
+}

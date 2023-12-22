@@ -1,0 +1,9 @@
+package Gates;
+
+import Connectors.Connector;
+
+public abstract class LogicGate 
+{
+	private Iterable<Connector> input_connectors;
+	private Iterable<Connector> output_connectors;
+}
